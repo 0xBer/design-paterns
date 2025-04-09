@@ -29,19 +29,19 @@ abstract class Logistics {
     }
 }
 
-export class LandLogisctics extends Logistics {
+export class LandLogistics extends Logistics {
     protected createTransport(): ITransport {
         return new Truck();
     }
 }
 
-export class SeaLogisctics extends Logistics {
+export class SeaLogistics extends Logistics {
     protected createTransport(): ITransport {
         return new Ship();
     }
 }
 
-export class AirLogisctics extends Logistics {
+export class AirLogistics extends Logistics {
     protected createTransport(): ITransport {
         return new Plane();
     }

@@ -1,5 +1,5 @@
 import { SimpleFactory } from "./SimpleFactory";
-import { LandLogisctics, SeaLogisctics, AirLogisctics } from "./Factory";
+import { LandLogistics, SeaLogistics, AirLogistics } from "./Factory";
 
 // Simple factory
 const simpleFactory = new SimpleFactory();
@@ -14,11 +14,11 @@ const plane1 = simpleFactory.createLogistics("air");
 plane1.deliver();
 
 // Factory
-const truck2 = new LandLogisctics();
+const truck2 = new LandLogistics();
 truck2.planDelivery();
 
-const ship2 = new SeaLogisctics();
+const ship2 = new SeaLogistics();
 ship2.planDelivery();
 
-const plane2 = new AirLogisctics();
+const plane2 = new AirLogistics();
 plane2.planDelivery();
