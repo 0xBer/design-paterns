@@ -1,42 +1,48 @@
-interface Shape {
-	draw(): void;
+interface ITransport {
+    deliver(): void;
 }
 
-class Circle implements Shape {
-	draw(): void {
-		console.log("Drawing a Circle");
-	}
+class Truck implements ITransport {
+    deliver(): void {
+        console.log("Deliver by Truck on Land");
+    }
 }
 
-class Square implements Shape {
-	draw(): void {
-		console.log("Drawing a Square");
-	}
+class Ship implements ITransport {
+    deliver(): void {
+        console.log("Deliver by Ship on Sea");
+    }
 }
 
-class Triangle implements Shape {
-	draw(): void {
-		console.log("Drawing a Triangle");
-	}
+class Plane implements ITransport {
+    deliver(): void {
+        console.log("Deliver by Plane on Air");
+    }
 }
 
-class ShapeFactory {
-	static createShape(type: string): Shape {
-		switch (type.toLowerCase()) {
-			case "circle":
-				return new Circle();
-			case "square":
-				return new Square();
-			case "triangle":
-				return new Triangle();
-			default:
-				throw new Error("Unknown shape type");
-		}
-	}
+abstract class Logistics {
+    protected abstract createTransport(): ITransport;
+
+    public planDelivery(): void {
+        const transport = this.createTransport();
+        transport.deliver();
+    }
 }
 
-const shape1 = ShapeFactory.createShape("circle");
-shape1.draw();
+export class LandLogisctics extends Logistics {
+    protected createTransport(): ITransport {
+        return new Truck();
+    }
+}
 
-const shape2 = ShapeFactory.createShape("triangle");
-shape2.draw();
+export class SeaLogisctics extends Logistics {
+    protected createTransport(): ITransport {
+        return new Ship();
+    }
+}
+
+export class AirLogisctics extends Logistics {
+    protected createTransport(): ITransport {
+        return new Plane();
+    }
+}
